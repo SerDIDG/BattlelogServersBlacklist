@@ -18,6 +18,8 @@ Future plans:
 - Preferences tab.
 - MOHW support can be implemented with donation only.
 
+=========================
+
 v 0.8:
 - Added Battlefield Hardline Beta support.
 
