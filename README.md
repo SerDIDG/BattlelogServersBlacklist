@@ -22,6 +22,7 @@ Future plans:
 
 v 0.8:
 - Added Battlefield Hardline Beta support.
+- Minor fixes.
 
 v 0.7:
 - Biggest update ever. Added global servers status and global comments. Finally added full Battlefield 4 support.
