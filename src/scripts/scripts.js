@@ -1,15 +1,14 @@
 var BattlelogServersBlacklist = function(o){
-	var that = this,
-		config = cm.merge({
-			'status' : 'on',
+    var that = this, config = cm.merge({
+            'status' : 'on',
             'version' : 0,
             'commentLength' : 200,
-			'langs' : {}
-		},o),
+            'langs' : {}
+        }, o),
         buttons = {},
         intervals = {};
-	
-	var init = function(){
+
+    var init = function(){
         var href = window.location.href;
         chrome.extension.sendMessage({'type' : 'init'}, function(response){
             config = cm.merge(config, response);
@@ -48,7 +47,7 @@ var BattlelogServersBlacklist = function(o){
                 }
             }
         });
-	};
+    };
 
     /* ******* HANDLERS ******* */
 
@@ -69,32 +68,30 @@ var BattlelogServersBlacklist = function(o){
             if(config['status'] == 'on'){
                 if(!buttons['serverBar'].inDOM()){
                     myNodes['bar'] = cm.getEl('ugm-playing-meta-data');
-                    myNodes['url'] = myNodes['bar']? myNodes['bar'].querySelector('a') : null;
+                    myNodes['url'] = myNodes['bar'] ? myNodes['bar'].querySelector('a') : null;
                     if(myNodes['bar'] && myNodes['url']){
-                        urlMatch =  myNodes['url'].getAttribute('href');
+                        urlMatch = myNodes['url'].getAttribute('href');
                         game = urlMatch.match(/^\/([0-9a-zA-Z\-]+)\//)[1];
                         // Insert container before server stuff
                         buttons['serverBar'].remove();
                         cm.replaceClass(myNodes['bar'], 'span7', 'span6');
                         myNodes['container'] = cm.insertBefore(cm.Node('div', {'class' : ['bsb-server-bar', game, 'span1'].join(' ')}), myNodes['bar']);
                         // Insert BSB Button
-                        buttons['serverBar'].setConfig(
-                            cm.merge(myConfig['button'], {
-                                'container' : myNodes['container'],
-                                'notificationContainer' : cm.getEl('receipt-container'),
-                                'server' : {
-                                    'id' : urlMatch.match(/\/servers\/show\/(pc||PC)\/([0-9a-zA-Z\-]+)\//)[2],
-                                    'url' :  urlMatch.match(/\/servers\/show\/(pc||PC)\/([0-9a-zA-Z\-]+)\/(.*)\//)[3],
-                                    'name' : myNodes['url'].innerHTML,
-                                    'game' : game
-                                },
-                                'bsb' : config,
-                                'onRemove' : function(){
-                                    cm.replaceClass(myNodes['bar'], 'span6', 'span7');
-                                    cm.remove(myNodes['container']);
-                                }
-                            })
-                        ).append();
+                        buttons['serverBar'].setConfig(cm.merge(myConfig['button'], {
+                            'container' : myNodes['container'],
+                            'notificationContainer' : cm.getEl('receipt-container'),
+                            'server' : {
+                                'id' : urlMatch.match(/\/servers\/show\/(pc||PC)\/([0-9a-zA-Z\-]+)\//)[2],
+                                'url' : urlMatch.match(/\/servers\/show\/(pc||PC)\/([0-9a-zA-Z\-]+)\/(.*)\//)[3],
+                                'name' : myNodes['url'].innerHTML,
+                                'game' : game
+                            },
+                            'bsb' : config,
+                            'onRemove' : function(){
+                                cm.replaceClass(myNodes['bar'], 'span6', 'span7');
+                                cm.remove(myNodes['container']);
+                            }
+                        })).append();
                     }
                 }else{
                     buttons['serverBar'].setConfig({'bsb' : config});
@@ -111,8 +108,7 @@ var BattlelogServersBlacklist = function(o){
         }, o);
 
         if(/\/servers\/(?!show)/g.test(window.location.href)){
-            var myNodes = {},
-                urlMatch;
+            var myNodes = {}, urlMatch;
             // Init BSB Button
             if(buttons['serversList']){
                 buttons['serversList'].remove();
@@ -128,16 +124,14 @@ var BattlelogServersBlacklist = function(o){
                             urlMatch = myNodes['rightColumn'].querySelector('footer a').getAttribute('href');
                             // Insert container before favourite button
                             buttons['serversList'].remove();
-                            myNodes['buttons'].appendChild(
-                                myNodes['container'] = cm.Node('div', {'class' : ['bsb-servers-list', myConfig['game']].join(' ')})
-                            );
+                            myNodes['buttons'].appendChild(myNodes['container'] = cm.Node('div', {'class' : ['bsb-servers-list', myConfig['game']].join(' ')}));
                             // Insert BSB Button
                             buttons['serversList'].setConfig({
                                 'container' : myNodes['container'],
                                 'notificationContainer' : cm.getEl('receipt-container'),
                                 'server' : {
                                     'id' : urlMatch.match(/\/servers\/show\/(pc||PC)\/([0-9a-zA-Z\-]+)\//)[2],
-                                    'url' :  urlMatch.match(/\/servers\/show\/(pc||PC)\/([0-9a-zA-Z\-]+)\/(.*)\//)[3],
+                                    'url' : urlMatch.match(/\/servers\/show\/(pc||PC)\/([0-9a-zA-Z\-]+)\/(.*)\//)[3],
                                     'name' : document.body.querySelector('#serverbrowser-results .server-row.active .server-name').innerHTML.replace(/[\n\r]*/gi, ''),
                                     'game' : myConfig['game']
                                 },
@@ -163,10 +157,9 @@ var BattlelogServersBlacklist = function(o){
         }, o);
 
         if(/\/servers\/show\/(pc||PC)\//g.test(window.location.href)){
-            var myNodes = {},
-                sid = window.location.href.match(/\/servers\/show\/(pc||PC)\/([0-9a-zA-Z\-]+)\//)[2],
+            var myNodes = {}, sid = window.location.href.match(/\/servers\/show\/(pc||PC)\/([0-9a-zA-Z\-]+)\//)[2],
                 urlMatch = window.location.href.match(/\/servers\/show\/(pc||PC)\/([0-9a-zA-Z\-]+)\/(.*)\//),
-                url = urlMatch && urlMatch[3]? urlMatch[3] : '';
+                url = urlMatch && urlMatch[3] ? urlMatch[3] : '';
             // Init BSB Button
             if(buttons['serverPage']){
                 buttons['serverPage'].remove();
@@ -181,16 +174,14 @@ var BattlelogServersBlacklist = function(o){
                             myNodes['buttons'] = myNodes['page'].querySelector('header .server-buttons');
                             // Insert container before favourite button
                             buttons['serverPage'].remove();
-                            myNodes['buttons'].appendChild(
-                                myNodes['container'] = cm.Node('div', {'class' : ['bsb-server-page', myConfig['game']].join(' ')})
-                            );
+                            myNodes['buttons'].appendChild(myNodes['container'] = cm.Node('div', {'class' : ['bsb-server-page', myConfig['game']].join(' ')}));
                             // Insert BSB Button
                             buttons['serverPage'].setConfig({
                                 'container' : myNodes['container'],
                                 'notificationContainer' : cm.getEl('receipt-container'),
                                 'server' : {
                                     'id' : sid,
-                                    'url' :  url,
+                                    'url' : url,
                                     'name' : document.querySelector('header .server-title h1').innerHTML,
                                     'game' : myConfig['game']
                                 },
@@ -240,7 +231,7 @@ var BattlelogServersBlacklist = function(o){
                                 },
                                 'server' : {
                                     'id' : urlMatch.match(/\/servers\/show\/(pc||PC)\/([0-9a-zA-Z\-]+)\//)[2],
-                                    'url' :  urlMatch.match(/\/servers\/show\/(pc||PC)\/([0-9a-zA-Z\-]+)\/(.*)\//)[3],
+                                    'url' : urlMatch.match(/\/servers\/show\/(pc||PC)\/([0-9a-zA-Z\-]+)\/(.*)\//)[3],
                                     'name' : myNodes['rightColumn'].querySelector('h1#selected-server-name a').innerHTML,
                                     'game' : 'bf3'
                                 },
@@ -265,7 +256,7 @@ var BattlelogServersBlacklist = function(o){
             var myNodes = {},
                 sid = window.location.href.match(/\/servers\/show\/(pc||PC)\/([0-9a-zA-Z\-]+)\//)[2],
                 urlMatch = window.location.href.match(/\/servers\/show\/(pc||PC)\/([0-9a-zA-Z\-]+)\/(.*)\//),
-                url = urlMatch && urlMatch[3]? urlMatch[3] : '';
+                url = urlMatch && urlMatch[3] ? urlMatch[3] : '';
             // Init BSB Button
             if(buttons['serverPage']){
                 buttons['serverPage'].remove();
@@ -290,7 +281,7 @@ var BattlelogServersBlacklist = function(o){
                                 },
                                 'server' : {
                                     'id' : sid,
-                                    'url' :  url,
+                                    'url' : url,
                                     'name' : document.querySelector('#server-header h1').innerHTML,
                                     'game' : 'bf3'
                                 },
@@ -309,8 +300,8 @@ var BattlelogServersBlacklist = function(o){
             }, 50);
         }
     };
-	
-	/* Main */
+
+    /* Main */
 
     that.toggle = function(){
         that.destruct();
@@ -318,8 +309,8 @@ var BattlelogServersBlacklist = function(o){
         init();
         return that;
     };
-	
-	that.destruct = function(){
+
+    that.destruct = function(){
         cm.forEach(intervals, function(item){
             item && clearInterval(item);
         });
@@ -328,18 +319,18 @@ var BattlelogServersBlacklist = function(o){
             item && item.remove();
             item = null;
         });
-		return that;
-	};
-	
-	init();
+        return that;
+    };
+
+    init();
 };
 
 var BattlelogServersBlacklistHelper = function(){
-	var url, bsb, isRunning;
+    var url, bsb, isRunning;
 
-	var init = function(){
-		// Global plugin works
-		chrome.extension.sendMessage({'type' : 'init'}, function(response){
+    var init = function(){
+        // Global plugin works
+        chrome.extension.sendMessage({'type' : 'init'}, function(response){
             if(!isRunning){
                 isRunning = true;
                 bsb = new BattlelogServersBlacklist(response);
@@ -351,12 +342,12 @@ var BattlelogServersBlacklistHelper = function(){
                     }
                 }, 50);
             }
-		});
-	};
-	
-	/* Main */
-	
-	init();
+        });
+    };
+
+    /* Main */
+
+    init();
 };
 
 /* ******* INIT ******* */

@@ -5,6 +5,7 @@
     height: 14px;
     background: url('chrome-extension://__MSG_@@extension_id__/images/edit.png');
 }
+
 .icon.bsb-block {
     width: 19px;
     height: 19px;
@@ -16,6 +17,7 @@
 .form {
     font-size: 12px;
 }
+
 .form .btn-wrap .btn {
     float: right;
     margin: 0 0 0 8px;
@@ -30,23 +32,28 @@
     position: relative;
     cursor: pointer;
 }
+
 .bsb-button > .counter,
 .bsb-button > .title {
     display: inline-block;
     vertical-align: top;
 }
+
 .bsb-button > .title {
     padding: 0 10px;
 }
+
 .bsb-button > .counter {
     padding: 0 10px 0 5px;
 }
+
 .bsb-button > .counter > .icon {
-    display:  inline-block;
+    display: inline-block;
     vertical-align: top;
 }
+
 .bsb-button > .counter > .text {
-    display:  inline-block;
+    display: inline-block;
     padding: 0 0 0 6px;
     font-weight: bold;
 }
@@ -69,6 +76,7 @@
     padding: 0;
     text-align: left;
 }
+
 .bsb-server-page .bsb-button,
 .bsb-server-page .btn.btn-small {
     text-align: left;
@@ -80,13 +88,15 @@
     width: 450px;
     padding: 4px 0;
 }
+
 .bsb-tooltip > .inner {
     padding: 8px;
-    background: rgba(0,0,0,0.9);
+    background: rgba(0, 0, 0, 0.9);
     border-radius: 3px;
     border: none;
     box-shadow: none;
 }
+
 .bsb-tooltip > .inner > .scroll {
     max-height: 236px;
     padding-right: 8px;
@@ -101,27 +111,33 @@
     overflow: hidden;
     list-style: none;
     font-size: 12px;
-    color: #fff;
+    color: #FFFFFF;
 }
+
 .bsb-comments-list > li {
     margin: 12px 0 0 0;
     padding: 0;
     display: block;
 }
+
 .bsb-comments-list > li:first-child {
     margin: 0;
 }
+
 .bsb-comments-list > li .date {
     font-size: 10px;
-    color: #c2c2c2;
+    color: #C2C2C2;
 }
+
 .bsb-comments-list > li .text {
     margin: 2px 0 0 0;
     line-height: 14px;
 }
+
 .bsb-comments-list > li .text.empty {
     font-style: italic;
 }
+
 .bsb-comments-list > li h3 {
     padding: 4px 0 0 0;
     margin: 0;
@@ -129,25 +145,29 @@
     font-weight: bold;
     font-size: 16px;
 }
+
 .bsb-comments-list > li:first-child h3 {
     padding: 0;
 }
+
 .bsb-comments-list > li.sep {
-    border-top: 1px solid #fff;
+    border-top: 1px solid #FFFFFF;
 }
 
 /* *** SERVER BAR *** */
 
 .bsb-server-bar {
     height: 42px;
-    float:  left;
+    float: left;
     overflow: hidden;
 }
+
 .bsb-server-bar .bsb-button {
     height: 40px;
     padding: 0;
     border-radius: 0;
 }
+
 .bsb-server-bar .bsb-button .counter,
 .bsb-server-bar .bsb-button .title {
     height: 18px;
@@ -159,10 +179,12 @@
     white-space: nowrap;
     line-height: 18px;
 }
+
 .bsb-server-bar .bsb-button .counter {
     height: 21px;
     line-height: 21px;
 }
+
 .bsb-server-bar .bsb-button .counter .icon {
     margin: 1px 0 0 0;
 }
@@ -183,25 +205,31 @@
     height: 30px;
     line-height: 30px;
 }
+
 .bsb-button.bsb-default > .counter {
-    border-right: 1px solid #d5dde5;
+    border-right: 1px solid #D5DDE5;
 }
+
 .bsb-button.bsb-default > .counter > .icon {
     margin: 6px 0 0 0;
     vertical-align: top;
 }
+
 .bsb-button.bsb-default.bsb-active {
-    border: 1px solid #fc6c6c;
-    color: #fc6c6c;
+    border: 1px solid #FC6C6C;
+    color: #FC6C6C;
 }
+
 .bsb-button.bsb-default.bsb-active > .counter {
-    border-color: #fc6c6c;
+    border-color: #FC6C6C;
 }
+
 .bsb-button.bsb-default.bsb-active:hover {
-    border-color: #d5dde5;
+    border-color: #D5DDE5;
 }
+
 .bsb-button.bsb-default.bsb-active:hover > .counter {
-    border-color: #d5dde5;
+    border-color: #D5DDE5;
 }
 
 /* *** DIALOG *** */
@@ -209,39 +237,45 @@
 .cm-dialog.bsb-default {
     z-index: 9000;
 }
+
 .cm-dialog.bsb-default > .bg {
     opacity: 1;
-    background-color: rgba(0,0,0,0.5);
-    background: transparent -webkit-radial-gradient(center, ellipse cover, rgba(0,0,0,0.3) 0, rgba(0,0,0,0.8) 90%);
-    background: transparent -moz-radial-gradient(center, ellipse cover, rgba(0,0,0,0.3) 0, rgba(0,0,0,0.8) 90%);
-    background: transparent radial-gradient(center, ellipse cover, rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.8) 90%);
+    background-color: rgba(0, 0, 0, 0.5);
+    background: transparent -webkit-radial-gradient(center, ellipse cover, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.8) 90%);
+    background: transparent -moz-radial-gradient(center, ellipse cover, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.8) 90%);
+    background: transparent radial-gradient(center, ellipse cover, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.8) 90%);
 }
+
 .cm-dialog.bsb-default > .window > .inner {
-    box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
     background: #070707;
-    border: 1px solid #fff;
+    border: 1px solid #FFFFFF;
     border-radius: 0;
 }
+
 .cm-dialog.bsb-default > .window > .inner > .descr {
     padding: 2px;
     background: #070707;
 }
-.cm-dialog.bsb-default > .window > .inner  > .title {
+
+.cm-dialog.bsb-default > .window > .inner > .title {
     margin: 0;
     padding: 0;
-    background: -webkit-linear-gradient(top, #dbdbdb, #ffffff 75%);
-    background: linear-gradient(to bottom, #dbdbdb, #ffffff 75%);
-    border-bottom: 1px solid #fff;
+    background: -webkit-linear-gradient(top, #DBDBDB, #FFFFFF 75%);
+    background: linear-gradient(to bottom, #DBDBDB, #FFFFFF 75%);
+    border-bottom: 1px solid #FFFFFF;
     height: 31px;
     line-height: 31px;
 }
-.cm-dialog.bsb-default > .window > .inner  > .title h1 {
+
+.cm-dialog.bsb-default > .window > .inner > .title h1 {
     height: 31px;
     text-align: center;
     line-height: 31px;
     font-size: 18px;
-    color: #000;
+    color: #000000;
 }
+
 .cm-dialog.bsb-default > .window > .inner > .close {
     width: 30px;
     height: 30px;
@@ -250,6 +284,7 @@
     background: url('chrome-extension://__MSG_@@extension_id__/images/bf4-dialog.png') center center no-repeat;
     opacity: 0.6;
 }
+
 .cm-dialog.bsb-default > .window > .inner > .close:hover {
     opacity: 1;
 }
@@ -261,6 +296,7 @@
     font-size: 10px;
     padding: 0;
 }
+
 .bsb-server-bar .bsb-button.bsb-default .counter,
 .bsb-server-bar .bsb-button.bsb-default .title {
     height: 20px;
@@ -272,23 +308,28 @@
     white-space: nowrap;
     line-height: 18px;
 }
+
 .bsb-server-bar .bsb-button.bsb-default .counter {
     height: 21px;
     line-height: 21px;
-    border-bottom: 1px solid #d5dde5;
+    border-bottom: 1px solid #D5DDE5;
     font-size: 13px;
 }
+
 .bsb-server-bar .bsb-button.bsb-default .counter .icon {
     margin: 1px 0 0 0;
 }
+
 .bsb-server-bar .bsb-button.bsb-default.bsb-active .counter {
-    border-color: #fc6c6c;
+    border-color: #FC6C6C;
 }
+
 .bsb-server-bar .bsb-button.bsb-default.bsb-active:hover {
-    border-color: #d5dde5;
+    border-color: #D5DDE5;
 }
+
 .bsb-server-bar .bsb-button.bsb-default.bsb-active:hover .counter {
-    border-color: #d5dde5;
+    border-color: #D5DDE5;
 }
 
 /* ******* BATTLEFIELD 3 ****** */
@@ -304,53 +345,61 @@
 
 .bsb-button.bf3 {
     height: 25px;
-    border: 1px solid #d5d5d5;
-    background: -webkit-linear-gradient(top, #f3f3f3 0%, #efefef 100%);
-    background: linear-gradient(to bottom, #f3f3f3 0%, #efefef 100%);
-    box-shadow: inset 0 1px 0 #fff, 0 1px 0 #fff;
+    border: 1px solid #D5D5D5;
+    background: -webkit-linear-gradient(top, #F3F3F3 0%, #EFEFEF 100%);
+    background: linear-gradient(to bottom, #F3F3F3 0%, #EFEFEF 100%);
+    box-shadow: inset 0 1px 0 #FFFFFF, 0 1px 0 #FFFFFF;
     border-radius: 2px;
     font-family: arial, helvetica, sans-serif;
     font-size: 11px;
     color: #353535;
 }
+
 .bsb-button.bf3:hover {
-    background: -webkit-linear-gradient(top, #f9f9f9 0%, #f8f8f8 100%);
-    background: linear-gradient(to bottom, #f9f9f9 0%, #f8f8f8 100%);
+    background: -webkit-linear-gradient(top, #F9F9F9 0%, #F8F8F8 100%);
+    background: linear-gradient(to bottom, #F9F9F9 0%, #F8F8F8 100%);
 }
+
 .bsb-button.bf3 > .counter,
 .bsb-button.bf3 > .title {
     height: 25px;
     line-height: 26px;
 }
+
 .bsb-button.bf3 > .counter {
-    border-right: 1px solid #d5d5d5;
+    border-right: 1px solid #D5D5D5;
 }
+
 .bsb-button.bf3 > .counter > .icon {
     margin: 4px 0 0 0;
 }
+
 .bsb-button.bf3.bsb-active {
-    border-color: #e45959;
-    background: none #fcabab;
-    box-shadow: inset 0 1px 2px rgba(0,0,0,0.2), 0 1px 0 #fff;
-}
-.bsb-button.bf3.bsb-active > .counter {
-    border-color: #e45959;
-}
-.bsb-button.bf3.bsb-active:hover {
-    border-color: #f19191;
-    background: none #fdcdcd;
-}
-.bsb-button.bf3.bsb-active:hover > .counter {
-    border-color: #f19191;
+    border-color: #E45959;
+    background: none #FCABAB;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2), 0 1px 0 #FFFFFF;
 }
 
+.bsb-button.bf3.bsb-active > .counter {
+    border-color: #E45959;
+}
+
+.bsb-button.bf3.bsb-active:hover {
+    border-color: #F19191;
+    background: none #FDCDCD;
+}
+
+.bsb-button.bf3.bsb-active:hover > .counter {
+    border-color: #F19191;
+}
 
 .bsb-server-page.bf3 {
     float: left;
     margin: 0 10px 0 0;
 }
+
 .bsb-servers-list.bf3 {
-    float:  left;
+    float: left;
     margin: 0 0 8px 10px;
 }
 
@@ -359,34 +408,40 @@
 .cm-dialog.bf3 {
     z-index: 9000;
 }
+
 .cm-dialog.bf3 > .bg {
     opacity: 1;
-    background: transparent -webkit-radial-gradient(center, ellipse cover, rgba(0,0,0,0.3) 0, rgba(0,0,0,0.8) 90%);
-    background: transparent -moz-radial-gradient(center, ellipse cover, rgba(0,0,0,0.3) 0, rgba(0,0,0,0.8) 90%);
-    background: transparent radial-gradient(center, ellipse cover, rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.8) 90%);
+    background: transparent -webkit-radial-gradient(center, ellipse cover, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.8) 90%);
+    background: transparent -moz-radial-gradient(center, ellipse cover, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.8) 90%);
+    background: transparent radial-gradient(center, ellipse cover, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.8) 90%);
 }
+
 .cm-dialog.bf3 > .window > .inner {
-    box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
-    background: #fff;
-    border: 6px solid rgba(0,0,0,0.7);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+    background: #FFFFFF;
+    border: 6px solid rgba(0, 0, 0, 0.7);
     border-radius: 0;
     color: #353535;
 }
+
 .cm-dialog.bf3 > .window > .inner > .descr {
     padding: 0;
 }
-.cm-dialog.bf3 > .window > .inner  > .title {
+
+.cm-dialog.bf3 > .window > .inner > .title {
     margin: 0;
     padding: 10px;
-    background: #ebebeb;
-    border-bottom: 1px solid #dfdfdf;
+    background: #EBEBEB;
+    border-bottom: 1px solid #DFDFDF;
     line-height: 18px;
 }
-.cm-dialog.bf3 > .window > .inner  > .title h1 {
+
+.cm-dialog.bf3 > .window > .inner > .title h1 {
     line-height: 18px;
     font-size: 12px;
     color: #353535;
 }
+
 .cm-dialog.bf3 > .window > .inner > .close {
     width: 13px;
     height: 13px;
@@ -394,6 +449,7 @@
     right: 19px;
     background: url('chrome-extension://__MSG_@@extension_id__/images/dialog.png') 0 -26px no-repeat;
 }
+
 .cm-dialog.bf3 > .window > .inner > .close:hover {
     opacity: 1;
     background-position: 0 -39px;
@@ -405,6 +461,7 @@
     height: 40px;
     border-radius: 0;
 }
+
 .bsb-server-bar .bsb-button.bf3 .counter,
 .bsb-server-bar .bsb-button.bf3 .title {
     height: 18px;
@@ -416,19 +473,23 @@
     white-space: nowrap;
     line-height: 18px;
 }
+
 .bsb-server-bar .bsb-button.bf3 .counter {
     height: 21px;
     line-height: 21px;
-    border-bottom: 1px solid #d5d5d5;
+    border-bottom: 1px solid #D5D5D5;
 }
+
 .bsb-server-bar .bsb-button.bf3 .counter .icon {
     margin: 1px 0 0 0;
 }
+
 .bsb-server-bar .bsb-button.bf3.bsb-active .counter {
-    border-color: #e45959;
+    border-color: #E45959;
 }
+
 .bsb-server-bar .bsb-button.bf3.bsb-active:hover .counter {
-    border-color: #f19191;
+    border-color: #F19191;
 }
 
 /* ******* BATTLEFIELD HARDLINE ******* */

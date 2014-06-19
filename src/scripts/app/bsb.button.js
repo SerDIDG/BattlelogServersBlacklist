@@ -1,6 +1,5 @@
 Com['BSBButton'] = function(o){
-    var that = this,
-        config = cm.merge({
+    var that = this, config = cm.merge({
             'container' : cm.Node('div'),
             'notificationContainer' : cm.Node('div'),
             'classes' : {
@@ -11,7 +10,8 @@ Com['BSBButton'] = function(o){
             'bsb' : {},
             'updateLocal' : 500,
             'updateGlobal' : 5000,
-            'onRemove' : function(){}
+            'onRemove' : function(){
+            }
         }, o),
         nodes = {},
         intervals = {},
@@ -42,10 +42,11 @@ Com['BSBButton'] = function(o){
         cm.addEvent(nodes['container'], 'click', buttonClick);
         // Tooltip
         components['tooltip'] = new Com.Tooltip({
-            'target' : nodes['container'],
-            'className' : 'bsb-tooltip',
-            'top' : 'targetHeight'
-        }).addEvent('onShow', renderComments);
+                'target' : nodes['container'],
+                'className' : 'bsb-tooltip',
+                'top' : 'targetHeight'
+            })
+            .addEvent('onShow', renderComments);
     };
 
     var initCheckers = function(){
@@ -88,9 +89,7 @@ Com['BSBButton'] = function(o){
     var renderComments = function(tooltip, container){
         var text;
         if(userComment || !cm.isEmpty(list)){
-            cm.clearNode(container).appendChild(
-                nodes['comments'] = cm.Node('ul', {'class' : 'bsb-comments-list'})
-            );
+            cm.clearNode(container).appendChild(nodes['comments'] = cm.Node('ul', {'class' : 'bsb-comments-list'}));
             // User Comment
             if(userComment){
                 nodes['comments'].appendChild(
@@ -128,9 +127,7 @@ Com['BSBButton'] = function(o){
             // Global Comments
             if(!cm.isEmpty(list)){
                 nodes['comments'].appendChild(
-                    cm.Node('li',
-                        cm.Node('h3', config['bsb']['langs']['globalComments'])
-                    )
+                    cm.Node('li', cm.Node('h3', config['bsb']['langs']['globalComments']))
                 );
                 cm.forEach(list, renderComment);
             }

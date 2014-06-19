@@ -1,59 +1,57 @@
 var BSBPopup = function(){
-	var that = this,
-		config = {},
-		nodes = {};
-	
-	var init = function(){
-		chrome.extension.sendMessage({'type' : 'getConfig'}, function(response){
-			config = cm.merge(config, response);
-			render();
-		});
-	};
-	
-	var render = function(){
-		var url;
-		// Structure
-		document.body.appendChild(
-			cm.Node('div', {'class' : 'bsb-popup'},
-				cm.Node('ul',
-					cm.Node('li',
-						cm.Node('div', {'class' : 'check-line'},
-							nodes['statusCheck'] = cm.Node('input', {'type' : 'checkbox', 'id' : 'bsb-popup-status'}),
-							cm.Node('label', {'for' : 'bsb-popup-status'}, config['langs']['enabledButton'])
-						)
-					),
-					cm.Node('li',
-						nodes['listButton'] = cm.Node('input', {'type' : 'button', 'class' : 'button', 'value' : config['langs']['bannedList']})
-					)
-				)
-			)
-		);
-		// Status Checkbox
-		nodes['statusCheck'].checked = config['status'] == 'on';
-		nodes['statusCheck'].onclick = function(){
-			chrome.tabs.getSelected(null, function(tab){
-				chrome.extension.sendMessage({'type' : 'toggleStatus', 'tab' : tab});
-			});
-		};
-		// List Button
-		nodes['listButton'].onclick = function(){
-			url = chrome.extension.getURL('options.html');
+    var that = this, config = {}, nodes = {};
 
-			chrome.tabs.query({'url' : url}, function(tabs){
-				if(tabs.length){
-					chrome.tabs.update(tabs[0].id, {'active' : true});
-				}else{
-					chrome.tabs.create({'url' : url});
-				}
-			});
-		};
-	};
-	
-	init();
+    var init = function(){
+        chrome.extension.sendMessage({'type' : 'getConfig'}, function(response){
+            config = cm.merge(config, response);
+            render();
+        });
+    };
+
+    var render = function(){
+        var url;
+        // Structure
+        document.body.appendChild(
+            cm.Node('div', {'class' : 'bsb-popup'},
+                cm.Node('ul',
+                    cm.Node('li',
+                        cm.Node('div', {'class' : 'check-line'},
+                            nodes['statusCheck'] = cm.Node('input', {'type' : 'checkbox', 'id' : 'bsb-popup-status'}),
+                            cm.Node('label', {'for' : 'bsb-popup-status'}, config['langs']['enabledButton'])
+                        )
+                    ),
+                    cm.Node('li',
+                        nodes['listButton'] = cm.Node('input', {'type' : 'button', 'class' : 'button', 'value' : config['langs']['bannedList']})
+                    )
+                )
+            )
+        );
+        // Status Checkbox
+        nodes['statusCheck'].checked = config['status'] == 'on';
+        nodes['statusCheck'].onclick = function(){
+            chrome.tabs.getSelected(null, function(tab){
+                chrome.extension.sendMessage({'type' : 'toggleStatus', 'tab' : tab});
+            });
+        };
+        // List Button
+        nodes['listButton'].onclick = function(){
+            url = chrome.extension.getURL('options.html');
+
+            chrome.tabs.query({'url' : url}, function(tabs){
+                if(tabs.length){
+                    chrome.tabs.update(tabs[0].id, {'active' : true});
+                }else{
+                    chrome.tabs.create({'url' : url});
+                }
+            });
+        };
+    };
+
+    init();
 };
 
 /* ******* INIT ******* */
 
-cm.onload(function (){
-	new BSBPopup();
+cm.onload(function(){
+    new BSBPopup();
 });

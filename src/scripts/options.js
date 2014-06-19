@@ -1,40 +1,38 @@
 var BSBOptions = function(){
-	var that = this,
-		config = {},
-		nodes = {},
+    var that = this,
+        config = {},
+        nodes = {},
         components = {},
         list = [];
-		
-	var init = function(){
-		chrome.extension.sendMessage({'type' : 'getConfig'}, function(response){
-			config = cm.merge(config, response);
+
+    var init = function(){
+        chrome.extension.sendMessage({'type' : 'getConfig'}, function(response){
+            config = cm.merge(config, response);
             render();
-		});
-	};
-	
-	var render = function(){
-		// Structure
-		document.body.appendChild(
-			nodes['container'] = cm.Node('div')
-		);
+        });
+    };
+
+    var render = function(){
+        // Structure
+        document.body.appendChild(nodes['container'] = cm.Node('div'));
         // Tabs
         new Com.Tabset({
-            'container' : nodes['container'],
-            'toggleOnHashChange' : false
-        }).addTab({
-            'id' : 'bf3',
-            'title' : 'Battlefield 3',
-            'onShow' : renderTab
-        }).addTab({
-            'id' : 'bf4',
-            'title' : 'Battlefield 4',
-            'onShow' : renderTab
-        }).addTab({
-            'id' : 'bfh',
-            'title' : 'Battlefield Hardline',
-            'onShow' : renderTab
-        }).set('bf3');
-	};
+                'container' : nodes['container'],
+                'toggleOnHashChange' : false
+            }).addTab({
+                'id' : 'bf3',
+                'title' : 'Battlefield 3',
+                'onShow' : renderTab
+            }).addTab({
+                'id' : 'bf4',
+                'title' : 'Battlefield 4',
+                'onShow' : renderTab
+            }).addTab({
+                'id' : 'bfh',
+                'title' : 'Battlefield Hardline',
+                'onShow' : renderTab
+            }).set('bf3');
+    };
 
     var renderTab = function(tabset, tab){
         chrome.extension.sendMessage({'type' : 'getList'}, function(response){
@@ -76,20 +74,20 @@ var BSBOptions = function(){
             ]
         });
     };
-	
-	var remove = function(item){
-		chrome.extension.sendMessage({'type' : 'unban', 'sid' : item['id']}, function(response){
-			location.reload(true);
-		});
-	};
+
+    var remove = function(item){
+        chrome.extension.sendMessage({'type' : 'unban', 'sid' : item['id']}, function(response){
+            location.reload(true);
+        });
+    };
 
     /* Main */
-	
-	init();
+
+    init();
 };
 
 /* ******* INIT ******* */
 
-cm.onload(function (){
-	new BSBOptions();
+cm.onload(function(){
+    new BSBOptions();
 });

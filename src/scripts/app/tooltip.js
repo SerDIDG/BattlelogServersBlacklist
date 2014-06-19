@@ -1,6 +1,5 @@
 Com['Tooltip'] = function(o){
-    var that = this,
-        config = cm.merge({
+    var that = this, config = cm.merge({
             'target' : cm.Node('div'),
             'className' : '',
             'top' : 0,     // targetHeight
@@ -28,13 +27,12 @@ Com['Tooltip'] = function(o){
         // Structure
         nodes['container'] = cm.Node('div', {'class' : 'cm-tooltip'},
             cm.Node('div', {'class' : 'inner'},
-                /*
+            /*
                 cm.Node('div', {'class' : 'title'},
                     cm.Node('h3')
                 ),
-                */
-                nodes['content'] = cm.Node('div', {'class' : 'scroll'})
-            )
+            */
+            nodes['content'] = cm.Node('div', {'class' : 'scroll'}))
         );
         // Add css class
         !cm.isEmpty(config['className']) && cm.addClass(nodes['container'], config['className']);
@@ -74,7 +72,7 @@ Com['Tooltip'] = function(o){
             // Remove mouseout event
             cm.removeEvent(document, 'mouseover', bodyEvent);
             // Animate
-            anim.go({'style' : {'opacity' : 0}, 'duration' : noDelay? 0 : 100, 'onStop' : function(){
+            anim.go({'style' : {'opacity' : 0}, 'duration' : noDelay ? 0 : 100, 'onStop' : function(){
                 nodes['container'].style.display = 'none';
                 cm.remove(nodes['container']);
                 /* *** EXECUTE API EVENTS *** */
@@ -86,16 +84,16 @@ Com['Tooltip'] = function(o){
     var getPosition = function(){
         var top = cm.getRealY(config['target']),
             topAdd = eval(config['top'].toString().replace('targetHeight', config['target'].offsetHeight)),
-            left =  cm.getRealX(config['target']),
+            left = cm.getRealX(config['target']),
             leftAdd = eval(config['left'].toString().replace('targetWidth', config['target'].offsetHeight)),
             height = nodes['container'].offsetHeight,
             width = nodes['container'].offsetWidth,
             pageSize = cm.getPageSize(),
-            positionTop = (top + topAdd + height > pageSize['winHeight']? (top - topAdd- height + config['target'].offsetHeight) : top + topAdd),
-            positionLeft = (left + leftAdd + width > pageSize['winWidth']? (left - leftAdd - width + config['target'].offsetWidth) : left + leftAdd);
+            positionTop = (top + topAdd + height > pageSize['winHeight'] ? (top - topAdd - height + config['target'].offsetHeight) : top + topAdd),
+            positionLeft = (left + leftAdd + width > pageSize['winWidth'] ? (left - leftAdd - width + config['target'].offsetWidth) : left + leftAdd);
 
         if(positionTop != nodes['container'].offsetTop || positionLeft != nodes['container'].offsetLeft){
-            nodes['container'].style.top =  [positionTop, 'px'].join('');
+            nodes['container'].style.top = [positionTop, 'px'].join('');
             nodes['container'].style.left = [positionLeft, 'px'].join('');
         }
     };

@@ -3,29 +3,35 @@
 body {
     cursor: default;
 }
+
 a {
     outline: none;
     cursor: pointer;
 }
+
 img {
     border: none;
 }
+
 form {
     margin: 0;
     padding: 0;
 }
+
 dl, dt, dd {
     padding: 0;
     margin: 0;
     display: block;
     text-indent: 0;
 }
+
 input[type="text"],
 input[type="email"],
 input[type="password"],
 textarea {
     cursor: text;
 }
+
 input[type="button"],
 input[type="submit"],
 input[type="reset"],
@@ -34,10 +40,12 @@ input[type="checkbox"],
 select {
     cursor: pointer;
 }
+
 input, select, textarea {
     outline: none;
     margin: 0;
 }
+
 table {
     width: 100%;
     margin: 0;
@@ -46,19 +54,22 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
+
 tbody, thead, tr {
     width: 100%;
 }
+
 tbody, thead, td, th, tr {
     margin: 0;
     padding: 0;
 }
+
 code {
     display: block;
     white-space: pre-wrap;
     padding: 8px 12px;
     margin: 4px 0;
-    background: #ffffff;
+    background: #FFFFFF;
     border: 1px dashed #999999;
     border-radius: 4px;
 }
