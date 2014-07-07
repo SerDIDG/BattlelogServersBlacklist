@@ -31,6 +31,8 @@ var BSB = function(){
         'emptyComment' : 'Comment not given.',
         'addWindowTitle' : 'Add to blacklist',
         'listEmptyName' : 'Hello Oldfag! Server name doesn\'t exists, because you was started using this plugin when trees was bigger and grass was greener.',
+        'visitTitle' : 'Screensider.com',
+        'visitDescr' : 'Games Screenshoting Community. Votes, discussions, ratings and much more in one place.',
         'dialog' : {
             'closeTitle' : 'Close',
             'close' : ''

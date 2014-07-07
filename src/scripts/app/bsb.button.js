@@ -140,7 +140,7 @@ Com['BSBButton'] = function(o){
         var text;
         nodes['comments'].appendChild(
             cm.Node('li',
-                cm.Node('div', {'class' : 'date'}, cm.dateFormat(cm.parseDate(item['date']), '%j %F %Y in %H:%i')),
+                cm.Node('div', {'class' : 'date'}, cm.dateFormat(cm.parseDate(item['date']), '%j %F %Y at %H:%i')),
                 text = cm.Node('div', {'class' : 'text'})
             )
         );

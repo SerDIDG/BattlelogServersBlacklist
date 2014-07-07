@@ -22,6 +22,14 @@ var BSBPopup = function(){
                     ),
                     cm.Node('li',
                         nodes['listButton'] = cm.Node('input', {'type' : 'button', 'class' : 'button', 'value' : config['langs']['bannedList']})
+                    ),
+                    cm.Node('li',
+                        cm.Node('dl',
+                            cm.Node('dt',
+                                cm.Node('a', {'href' : 'http://screensider.com', 'target' : '_blank'}, config['langs']['visitTitle'])
+                            ),
+                            cm.Node('dd', config['langs']['visitDescr'])
+                        )
                     )
                 )
             )

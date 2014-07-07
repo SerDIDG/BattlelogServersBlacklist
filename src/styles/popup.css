@@ -7,7 +7,7 @@ body {
 }
 
 .bsb-popup {
-    width: 170px;
+    width: 210px;
     padding: 12px;
 }
 
@@ -27,4 +27,8 @@ body {
 
 .bsb-popup .button {
     width: 100%;
+}
+
+.bsb-popup dt {
+    font-weight: bold;
 }
