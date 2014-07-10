@@ -4,14 +4,11 @@
     "name" : "Battlelog Servers Blacklist",
     "short_name" : "BSB",
     "description" : "This extension allows you to create your own blacklist of banned Battlefield series servers.",
-    "version" : "0.8.1",
+    "version" : "0.8.2",
     "permissions" : [
 		"tabs",
-        "*://battlelog.battlefield.com",
 		"*://battlelog.battlefield.com/*",
-		"http://bsb.artlark.ru",
-		"http://bsb.artlark.ru/*",
-        "http://screensider.com"
+		"http://bsb.artlark.ru/*"
     ],
     "icons" : {
         "128" : "images/icon128.png",

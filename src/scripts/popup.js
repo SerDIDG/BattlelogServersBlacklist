@@ -1,5 +1,13 @@
 var BSBPopup = function(){
-    var that = this, config = {}, nodes = {};
+    var that = this,
+        config = {},
+        nodes = {},
+        donateButton =  '<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">' +
+                            '<input type="hidden" name="cmd" value="_s-xclick">' +
+                            '<input type="hidden" name="hosted_button_id" value="TV3A8KB5ZYPFC">' +
+                            '<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">' +
+                            '<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">' +
+                        '</form>';
 
     var init = function(){
         chrome.extension.sendMessage({'type' : 'getConfig'}, function(response){
@@ -30,7 +38,8 @@ var BSBPopup = function(){
                             ),
                             cm.Node('dd', config['langs']['visitDescr'])
                         )
-                    )
+                    ),
+					cm.Node('li', {'innerHTML' : donateButton})
                 )
             )
         );
