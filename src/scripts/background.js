@@ -155,9 +155,9 @@ var BSB = function(){
     var readGlobal = function(sid, handler){
         cm.ajax({
             'type' : 'text',
-            'method' : 'GET',
+            'method' : 'get',
             'params' : cm.obj2URI({'sid' : sid}),
-            'url' : 'http://bsb.artlark.ru?',
+            'url' : 'http://bsb.artlark.ru',
             'handler' : handler || function(){}
         });
     };

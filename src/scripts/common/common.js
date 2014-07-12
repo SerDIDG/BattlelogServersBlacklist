@@ -17,7 +17,7 @@ Hash (?):						1559
 */
 
 var cm = common = _ = {
-        '_version' : '1.1-bsb',
+        '_version' : '1.2-bsb',
         '_loadTime' : Date.now(),
         '_debug' : true,
         '_debugAlert' : false,
@@ -133,117 +133,152 @@ if(!Date.now){
 
 /* ******* OBJECTS AND ARRAYS ******* */
 
-cm.isArray = Array.isArray || function(a){ return (a)? a.constructor == Array : false; };
-cm.isObject = function(o){ return (o)? o.constructor == Object : false; };
+cm.isArray = Array.isArray || function(a){
+    return (a) ? a.constructor == Array : false;
+};
+cm.isObject = function(o){
+    return (o) ? o.constructor == Object : false;
+};
 
-cm.forEach = function(o, handler){
-	if(!o || !handler){
-		return null;
-	}
+cm.forEach = function(o, callback){
+    if(!o){
+        return null;
+    }
+    if(!callback){
+        return o;
+    }
+    var i, l;
     switch(o.constructor){
         case Object:
             for(var key in o){
                 if(o.hasOwnProperty(key)){
-                    handler(o[key], key);
+                    callback(o[key], key);
                 }
             }
             break;
         case Array:
-            o.forEach(handler);
+            o.forEach(callback);
             break;
         case Number:
-            for(var i = 0; i < o; i++){
-                handler(i);
+            for(i = 0; i < o; i++){
+                callback(i);
             }
             break;
         default:
             try{
-                Array.prototype.forEach.call(o, handler);
+                Array.prototype.forEach.call(o, callback);
             }catch(e){
                 try{
-                    for(var i = 0, l = o.length; i < l; i++){
-                        (function(){
-                            var z = i;
-                            handler(o[z], z);
-                        })();
+                    for(i = 0, l = o.length; i < l; i++){
+                        callback(o[i], i);
                     }
                 }catch(e){}
             }
             break;
     }
-	return o;
+    return o;
 };
 
 cm.merge = function(o1, o2){
-	var o1;
-	if(!o1 || typeof o1 == 'string' || typeof o1 == 'number'){
-		o1 = {}
-	}else{
-		o1 = cm.clone(o1);
-	}
-	cm.forEach(o2, function(item, key){
-		if(item != null){
-			try{
-				if(item.constructor == Object){
-					o1[key] = cm.merge(o1[key], item);
-				}else{
-					o1[key] = item;
-				}
-			}catch(e){
-				o1[key] = item;
-			}
-		}
-	});
-	return o1;
+    if(!o2){
+        o2 = {};
+    }
+    if(!o1){
+        o1 = {}
+    }else if(cm.isObject(o1) || cm.isArray(o1)){
+        o1 = cm.clone(o1);
+    }else{
+        return cm.clone(o2);
+    }
+    cm.forEach(o2, function(item, key){
+        if(item != null){
+            try{
+                if(Object.prototype.toString.call(item) == '[object Object]' && item.constructor != Object){
+                    o1[key] = item;
+                }else if(cm.isObject(item)){
+                    o1[key] = cm.merge(o1[key], item);
+                }else{
+                    o1[key] = item;
+                }
+            }catch(e){
+                o1[key] = item;
+            }
+        }
+    });
+    return o1;
 };
 
-cm.clone = function(o, type){
+cm.extend = function(o1, o2){
+    if(!o1){
+        return o2;
+    }
+    if(!o2){
+        return o1;
+    }
+    var o;
+    switch(o1.constructor){
+        case Array:
+            o = o1.concat(o2);
+            break;
+        case Object:
+            o = {};
+            cm.forEach(o1, function(item, key){
+                o[key] = item;
+            });
+            cm.forEach(o2, function(item, key){
+                o[key] = item;
+            });
+            break;
+    }
+    return o;
+};
+
+cm.clone = function(o, cloneNode){
     var newO;
     if(!o){
         return o;
     }
-    // Support method of old clone function
-    if(type && type == 'array'){
-        newO = [];
-        cm.forEach(o, function(item){
-            newO.push(cm.clone(item));
-        });
-        return newO;
-    }
-    // GO
     switch(o.constructor){
         case Function:
         case String:
         case Number:
         case RegExp:
+        case Boolean:
+        case XMLHttpRequest:
             newO = o;
             break;
         case Array:
             newO = [];
             cm.forEach(o, function(item){
-                newO.push(cm.clone(item));
+                newO.push(cm.clone(item, cloneNode));
             });
             break;
         case Object:
             newO = {};
             cm.forEach(o, function(item, key){
-                newO[key] = cm.clone(item);
+                newO[key] = cm.clone(item, cloneNode);
             });
             break;
         default:
-            if(o.nodeType){
+            // Exceptions
+            if(cm.isNode(o)){
+                if(cloneNode){
+                    newO = o.cloneNode(true);
+                }else{
+                    newO = o;
+                }
+            }else if(Object.prototype.toString.call(o) == '[object Object]' && o.constructor != Object){
                 newO = o;
             }else{
                 newO = [];
                 cm.forEach(o, function(item){
-                    newO.push(item);
+                    newO.push(cm.clone(item, cloneNode));
                 });
             }
             break;
     }
     return newO;
 };
-
 cm.getLength = function(o){
 	var i = 0;
 	cm.forEach(o, function(){
@@ -491,7 +526,6 @@ cm.getEl = function(str){
 };
 
 cm.getByClass = function(str, node){
-	var node = node || document;
 	if(node.getElementsByClassName){
 		return node.getElementsByClassName(str);
 	}
@@ -670,7 +704,7 @@ cm.clearNode = function(node){
 };
 
 cm.prevEl = function(node){
-	var node = node.previousSibling;
+	node = node.previousSibling;
 	if(node && node.nodeType && node.nodeType != 1){
         node = cm.prevEl(node);
     }
@@ -678,7 +712,7 @@ cm.prevEl = function(node){
 };
 
 cm.nextEl = function(node){
-    var node = node.nextSibling;
+    node = node.nextSibling;
     if(node && node.nodeType && node.nodeType != 1){
         node = cm.nextEl(node);
     }
@@ -894,11 +928,14 @@ cm.clearForm = function(o){
 };
 
 cm.setSelect = function(o, value){
-	var options = o.getElementsByTagName('option');
-	for(var k = 0, ln = options.length; k < ln; k++){
-		options[k].selected = (typeof(value) == 'object'? cm.inArray(options[k++].value, value) : options[k++].value == value);
+    if(!o || !cm.isNode(o)){
+        return null;
     }
-	return true;
+	var options = o.getElementsByTagName('option');
+    cm.forEach(options, function(node){
+        node.selected = (typeof value == 'object'? cm.inArray(node.value, value) : node.value == value)
+    });
+	return o;
 };
 
 cm.toggleRadio = function(name, value, node){
@@ -1714,25 +1751,92 @@ cm.cookieDate = function(num){
 
 /* ******* AJAX ******* */
 
-cm.ajax = cm.altReq = function(){
-	var o = cm.merge({
-			'type' : 'xml',
-			'method' : 'post',
-			'params' : '',
-			'url' : '',
-			'httpRequestObject' : false
-		}, arguments[0]),
-		type = (o.type && o.type.toLowerCase() == 'text')? 'responseText' : 'responseXML',
-		method = o.method || 'post',
-		params = o.params || '',
-		url = (method.toLowerCase() == 'post')? o.url : o.url + params,
-		httpRequestObject = o.httpRequestObject? o.httpRequestObject : cm.createXmlHttpRequestObject();
-	
-	httpRequestObject.open(method, url, true);
-	httpRequestObject.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;");
-	httpRequestObject.onreadystatechange = (o.handler)? function(){ if (httpRequestObject.readyState == 4) { o.handler(httpRequestObject[type], httpRequestObject.status)}} : null;
-	(method.toLowerCase() == 'post')? httpRequestObject.send(params) : httpRequestObject.send(null);
-	return httpRequestObject;
+cm.createXmlHttpRequestObject = function(){
+    var xmlHttp;
+    try{
+        xmlHttp = new XMLHttpRequest();
+    }catch(e){
+        var XmlHttpVersions = [
+            "MSXML2.XMLHTTP.6.0",
+            "MSXML2.XMLHTTP.5.0",
+            "MSXML2.XMLHTTP.4.0",
+            "MSXML2.XMLHTTP.3.0",
+            "MSXML2.XMLHTTP",
+            "Microsoft.XMLHTTP"
+        ];
+        for(var i = 0; i < XmlHttpVersions.length && !xmlHttp; i++){
+            try{
+                xmlHttp = new ActiveXObject(XmlHttpVersions[i]);
+            }catch(e){}
+        }
+    }
+    if(!xmlHttp){
+        alert("Error creating the XMLHttpRequest object.");
+    }
+    return xmlHttp;
+};
+
+cm.ajax = function(o){
+    var config = cm.merge({
+            'type' : 'xml',                                         // text | xml | json
+            'method' : 'post',                                      // post | get
+            'params' : '',
+            'url' : '',
+            'httpRequestObject' : cm.createXmlHttpRequestObject(),
+            'headers' : {
+                'Content-Type' : 'application/x-www-form-urlencoded',
+                'X-Requested-With' : 'XMLHttpRequest'
+            },
+            'beforeSend' : function(){},
+            'handler' : function(){}
+        }, o),
+        responceType,
+        responce;
+
+    var init = function(){
+        validate();
+        send();
+    };
+
+    var validate = function(){
+        config['type'] = config['type'].toLocaleLowerCase();
+        responceType =  /text|json/.test(config['type']) ? 'responseText' : 'responseXML';
+        config['method'] = config['method'].toLocaleLowerCase();
+        if(config['method'] != 'post'){
+            if(!cm.isEmpty(config['params'])){
+                config['url'] = [config['url'], config['params']].join('?');
+            }
+        }
+    };
+
+    var send = function(){
+        config['httpRequestObject'].open(config['method'], config['url'], true);
+        // Set Headers
+        cm.forEach(config['headers'], function(value, name){
+            config['httpRequestObject'].setRequestHeader(name, value);
+        });
+        // Add response events
+        config['httpRequestObject'].onreadystatechange = function(){
+            if(config['httpRequestObject'].readyState == 4){
+                responce = config['httpRequestObject'][responceType];
+                if(config['type'] == 'json'){
+                    responce = cm.parseJSON(responce);
+                }
+                config['handler'](responce, config['httpRequestObject'].status, config['httpRequestObject']);
+            }
+        };
+        // Before send events
+        config['beforeSend'](config['httpRequestObject']);
+        // Send
+        if(config['method'] == 'post'){
+            config['httpRequestObject'].send(config['params']);
+        }else{
+            config['httpRequestObject'].send(null);
+        }
+    };
+
+    init();
+    return config['httpRequestObject'];
 };
 
 cm.parseJSON = function(str){
@@ -1810,25 +1914,6 @@ cm.responseInArray = function(xmldoc){
 	
 cm.getTxtVal = function(o){
 	return o.nodeType == 1 && o.firstChild? o.firstChild.nodeValue : '';
-};
-
-cm.createXmlHttpRequestObject = function(){
-	var xmlHttp;
-	try{
-		xmlHttp = new XMLHttpRequest();
-	}catch(e){
-		var XmlHttpVersions = ["MSXML2.XMLHTTP.6.0", "MSXML2.XMLHTTP.5.0", "MSXML2.XMLHTTP.4.0", "MSXML2.XMLHTTP.3.0", "MSXML2.XMLHTTP", "Microsoft.XMLHTTP"];
-		for(var i = 0; i < XmlHttpVersions.length && !xmlHttp; i++){
-			try{
-				xmlHttp = new ActiveXObject(XmlHttpVersions[i]);
-			}catch(e){}
-		}
-	}
-	if(!xmlHttp){
-		alert("Error creating the XMLHttpRequest object.");
-	}else{
-		return xmlHttp;
-	}
 };
 
 /* ******* HASH ******* */

@@ -20,6 +20,15 @@ Future plans:
 
 =========================
 
+v 0.8.3:
+- Added AJAX Headers for future works.
+
+v 0.8.2:
+- Donate button.
+
+v 0.8.1:
+- Fixed bug with incorrect displaying month of comment.
+
 v 0.8:
 - Added Battlefield Hardline Beta support.
 - Minor fixes.

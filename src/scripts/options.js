@@ -70,7 +70,7 @@ var BSBOptions = function(){
                 {'key' : 'name', 'type' : 'url', 'linkKey' : 'url', 'width' : '30%', 'title' : config['langs']['serverName'], 'titleTag' : true},
                 {'key' : 'comment', 'type' : 'text', 'width' : 'auto', 'title' : config['langs']['comment'], 'titleTag' : true},
                 {'key' : 'date', 'type' : 'date', 'width' : 140, 'title' : config['langs']['addedDate']},
-                {'type' : 'icon', 'iconClass' : 'remove', 'width' : 16, 'sort' : false, 'title' : config['langs']['remove'], 'onClick' : remove},
+                {'type' : 'icon', 'iconClass' : 'remove', 'width' : 16, 'sort' : false, 'title' : config['langs']['remove'], 'onClick' : remove}
             ]
         });
     };
