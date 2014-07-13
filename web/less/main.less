@@ -1,0 +1,64 @@
+/* ************ TEMPLATE STYLES ************ */
+
+/* ******* TAGS ******* */
+
+/* ******* COMPONENTS ******* */
+
+/* *** GRIDLIST *** */
+
+.gridlist-counter {
+    margin: 0 0 @cm-indentMedium;
+}
+
+/* *** LOADER *** */
+
+.tpl-loader {
+    .bg {
+        opacity: 1;
+    }
+}
+
+/* ******* STRUCTURE ******* */
+
+.header,
+.content,
+.footer {
+    position: relative;
+    padding: 0 @cm-indentMedium;
+}
+
+.inner {
+    .header > &,
+    .content > &,
+    .footer > & {
+        max-width: 1280px;
+        margin: 0 auto;
+        position: relative;
+    }
+}
+
+/* ******* HEADER ******* */
+
+.header {
+    z-index: 3;
+
+    > .inner {
+        padding: @cm-indentMedium 0;
+    }
+}
+
+/* ******* CONTENT ******* */
+
+.content {
+    z-index: 2;
+
+    > .inner {
+    }
+}
+
+/* ******* FOOTER ******* */
+
+.footer {
+    > .inner {
+    }
+}

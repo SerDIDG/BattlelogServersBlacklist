@@ -20,6 +20,10 @@ Future plans:
 
 =========================
 
+v 0.8.4:
+- BSB button was not shown at Battlefield 4's serverbrowser warsaw.
+- Added web version of global BSB stats.
+
 v 0.8.3:
 - Added AJAX Headers for future works.
 

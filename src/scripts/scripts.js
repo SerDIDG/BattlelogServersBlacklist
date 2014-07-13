@@ -81,8 +81,8 @@ var BattlelogServersBlacklist = function(o){
                             'container' : myNodes['container'],
                             'notificationContainer' : cm.getEl('receipt-container'),
                             'server' : {
-                                'id' : urlMatch.match(/\/servers\/show\/(pc||PC)\/([0-9a-zA-Z\-]+)\//)[2],
-                                'url' : urlMatch.match(/\/servers\/show\/(pc||PC)\/([0-9a-zA-Z\-]+)\/(.*)\//)[3],
+                                'id' : urlMatch.match(/\/show\/(pc||PC)\/([0-9a-zA-Z\-]+)\//)[2],
+                                'url' : urlMatch.match(/\/show\/(pc||PC)\/([0-9a-zA-Z\-]+)\/(.*)\//)[3],
                                 'name' : myNodes['url'].innerHTML,
                                 'game' : game
                             },
@@ -106,8 +106,7 @@ var BattlelogServersBlacklist = function(o){
         var myConfig = cm.merge({
             'game' : 'bf4'
         }, o);
-
-        if(/\/servers\/(?!show)/g.test(window.location.href)){
+        if(/\/(servers|serverbrowserwarsaw)\/(?!show)/g.test(window.location.href)){
             var myNodes = {}, urlMatch;
             // Init BSB Button
             if(buttons['serversList']){
@@ -130,8 +129,8 @@ var BattlelogServersBlacklist = function(o){
                                 'container' : myNodes['container'],
                                 'notificationContainer' : cm.getEl('receipt-container'),
                                 'server' : {
-                                    'id' : urlMatch.match(/\/servers\/show\/(pc||PC)\/([0-9a-zA-Z\-]+)\//)[2],
-                                    'url' : urlMatch.match(/\/servers\/show\/(pc||PC)\/([0-9a-zA-Z\-]+)\/(.*)\//)[3],
+                                    'id' : urlMatch.match(/\/show\/(pc||PC)\/([0-9a-zA-Z\-]+)\//)[2],
+                                    'url' : urlMatch.match(/\/show\/(pc||PC)\/([0-9a-zA-Z\-]+)\/(.*)\//)[3],
                                     'name' : document.body.querySelector('#serverbrowser-results .server-row.active .server-name').innerHTML.replace(/[\n\r]*/gi, ''),
                                     'game' : myConfig['game']
                                 },
@@ -156,9 +155,9 @@ var BattlelogServersBlacklist = function(o){
             'game' : 'bf4'
         }, o);
 
-        if(/\/servers\/show\/(pc||PC)\//g.test(window.location.href)){
-            var myNodes = {}, sid = window.location.href.match(/\/servers\/show\/(pc||PC)\/([0-9a-zA-Z\-]+)\//)[2],
-                urlMatch = window.location.href.match(/\/servers\/show\/(pc||PC)\/([0-9a-zA-Z\-]+)\/(.*)\//),
+        if(/\/(servers|serverbrowserwarsaw)\/show\/(pc||PC)\//g.test(window.location.href)){
+            var myNodes = {}, sid = window.location.href.match(/\/show\/(pc||PC)\/([0-9a-zA-Z\-]+)\//)[2],
+                urlMatch = window.location.href.match(/\/show\/(pc||PC)\/([0-9a-zA-Z\-]+)\/(.*)\//),
                 url = urlMatch && urlMatch[3] ? urlMatch[3] : '';
             // Init BSB Button
             if(buttons['serverPage']){

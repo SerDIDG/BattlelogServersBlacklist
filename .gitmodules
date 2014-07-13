@@ -1,0 +1,3 @@
+[submodule "web/libs/common"]
+	path = web/libs/common
+	url = git://github.com/SerDIDG/FioraUI.git
