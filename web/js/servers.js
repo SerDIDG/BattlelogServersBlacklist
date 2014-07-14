@@ -78,7 +78,7 @@ function(params){
             }
 
             if(cm.isEmpty(item['comment'])){
-                item['comment'] = ['<i>', ' --- ', that.lang('Comment not given'), ' --- ', '</i>'].join('');
+                item['comment'] = ['<i>', ' --- ', that.lang('No comments left'), ' --- ', '</i>'].join('');
             }
 
             if(!cm.isEmpty(server['url'])){
