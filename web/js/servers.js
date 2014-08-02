@@ -1,5 +1,6 @@
 cm.define('Tpl.Servers', {
     'modules' : [
+        'Params',
         'DataNodes',
         'Langs'
     ],
@@ -18,7 +19,8 @@ function(params){
     that.components = {};
     that.nodes = {
         'Template' : {
-            'contentInner' : cm.Node('div')
+            'contentInner' : cm.Node('div'),
+            'errorMessage' : cm.Node('div')
         }
     };
 
@@ -44,22 +46,35 @@ function(params){
             'params' : cm.obj2URI({'type' : 'bans', 'sid' : 'all'}),
             'url' : 'http://bsb.artlark.ru',
             'handler' : function(responce){
-                that.bans = cm.isArray(responce)? responce : [];
+                if(responce){
+                    that.bans = cm.isArray(responce)? responce : [];
 
-                cm.ajax({
-                    'type' : 'json',
-                    'method' : 'get',
-                    'params' : cm.obj2URI({'type' : 'servers', 'sid' : 'all'}),
-                    'url' : 'http://bsb.artlark.ru',
-                    'handler' : function(responce){
-                        that.servers = cm.isArray(responce)? responce : [];
-                        prepare();
-                        render();
-                        that.components['overlay'].close();
-                    }
-                });
+                    cm.ajax({
+                        'type' : 'json',
+                        'method' : 'get',
+                        'params' : cm.obj2URI({'type' : 'servers', 'sid' : 'all'}),
+                        'url' : 'http://bsb.artlark.ru',
+                        'handler' : function(responce){
+                            if(responce){
+                                that.servers = cm.isArray(responce)? responce : [];
+                                prepare();
+                                render();
+                                that.components['overlay'].close();
+                            }else{
+                                processError();
+                            }
+                        }
+                    });
+                }else{
+                    processError();
+                }
             }
         });
+    };
+
+    var processError = function(){
+        that.nodes['Template']['errorMessage'].style.display = 'block';
+        that.components['overlay'].close();
     };
 
     var prepare = function(){

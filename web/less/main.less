@@ -45,6 +45,12 @@
     > .inner {
         padding: @cm-indentMedium 0;
     }
+
+    .logo {
+        .descr:extend(.cm-font-title) {
+
+        }
+    }
 }
 
 /* ******* CONTENT ******* */
@@ -54,6 +60,11 @@
 
     > .inner {
     }
+}
+
+.tpl-message:extend(.cm-font-title) {
+    display: none;
+    color: @cm-colorError;
 }
 
 /* ******* FOOTER ******* */

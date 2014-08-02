@@ -2,6 +2,7 @@ var Tpl = {};
 
 cm.define('Tpl.Init', {
     'modules' : [
+        'Params',
         'DataNodes'
     ],
     'params' : {

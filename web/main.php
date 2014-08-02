@@ -46,7 +46,10 @@
 
 <div class="header">
     <div class="inner">
-        <div class="cm-font-title">Battlelog Servers Blacklist</div>
+        <div class="logo">
+            <div class="descr">Battlelog Servers Blacklist</div>
+        </div>
+        <div class="cm-font-title"></div>
     </div>
 </div>
 
@@ -57,6 +60,7 @@
 <div class="content">
     <div class="inner" data-node="Template.contentInner">
         <div data-element="servers"></div>
+        <div class="tpl-message" data-node="Template.errorMessage">BSB Server Error! Please try again later!</div>
     </div>
 </div>
 
