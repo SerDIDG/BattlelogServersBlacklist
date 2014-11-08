@@ -13,8 +13,9 @@ Supported games:
 - Battlefield Hardline Beta
  
 Future plans:
+- Sign Up by Google Account to prevent spam.
+- User comments votes and raiting.
 - Hide blocked servers from Server Browser.
-- Display BSB status of server on which one's friend plays in Com Center.
 - Preferences tab.
 - MOHW support can be implemented with donation only.
 
