@@ -99,9 +99,17 @@ function(params){
             }
 
             if(!cm.isEmpty(server['url'])){
-                item['url'] = ['http://battlelog.battlefield.com', server['game'], 'servers/show/pc', server['id'], server['url'], ''].join('/');
+                if(/^cte/.test(server['game'])){
+                    item['url'] = ['http://cte.battlelog.com', server['game'].replace('cte_', ''), 'servers/show/pc', server['id'], server['url'], ''].join('/');
+                }else{
+                    item['url'] = ['http://battlelog.battlefield.com', server['game'], 'servers/show/pc', server['id'], server['url'], ''].join('/');
+                }
             }else{
-                item['url'] = ['http://battlelog.battlefield.com', server['game'], 'servers/show/pc', server['id'], ''].join('/');
+                if(/^cte/.test(server['game'])){
+                    item['url'] = ['http://cte.battlelog.com', server['game'].replace('cte_', ''), 'servers/show/pc', server['id'], ''].join('/');
+                }else{
+                    item['url'] = ['http://battlelog.battlefield.com', server['game'], 'servers/show/pc', server['id'], ''].join('/');
+                }
             }
 
             if(!that.data[item['game']]){
