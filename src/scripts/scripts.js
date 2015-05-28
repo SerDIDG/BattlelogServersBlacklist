@@ -19,7 +19,7 @@ var BattlelogServersBlacklist = function(o){
                 });
             }, 50);
             // Init Helpers
-            if(/battlefield.com\/(bf3|bf4|bfh)/g.test(href)){
+            if(/battlefield.com\/(bf3|bf4|bfh)/g.test(href) || /battlelog.com\/(bf4|bfh)/g.test(href)){
                 // Battlefield 3
                 if(/battlefield.com\/bf3/g.test(href)){
                     DefaultServerBar({
@@ -44,6 +44,18 @@ var BattlelogServersBlacklist = function(o){
                     DefaultServerBar();
                     DefaultServerList({'game' : 'bfh'});
                     DefaultServerPage({'game' : 'bfh'});
+                }
+                // CTE: Battlefield 4
+                if(/battlelog.com\/bf4/g.test(href)){
+                    DefaultServerBar();
+                    DefaultServerList({'game' : 'cte_bf4'});
+                    DefaultServerPage({'game' : 'cte_bf4'});
+                }
+                // CTE: Battlefield Hardline
+                if(/battlelog.com\/bfh/g.test(href)){
+                    DefaultServerBar();
+                    DefaultServerList({'game' : 'cte_bfh'});
+                    DefaultServerPage({'game' : 'cte_bfh'});
                 }
             }
         });
@@ -74,7 +86,7 @@ var BattlelogServersBlacklist = function(o){
                         game = urlMatch.match(/^\/([0-9a-zA-Z\-]+)\//)[1];
                         // Insert container before server stuff
                         buttons['serverBar'].remove();
-                        cm.replaceClass(myNodes['bar'], 'span7', 'span6');
+                        cm.replaceClass(myNodes['bar'], 'span7 span6', 'span5');
                         myNodes['container'] = cm.insertBefore(cm.Node('div', {'class' : ['bsb-server-bar', game, 'span1'].join(' ')}), myNodes['bar']);
                         // Insert BSB Button
                         buttons['serverBar'].setConfig(cm.merge(myConfig['button'], {

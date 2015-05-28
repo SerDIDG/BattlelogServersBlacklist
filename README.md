@@ -10,7 +10,9 @@ Tired of stupid servers configuration; auto balance in inappropriate moment; no 
 Supported games:
 - Battlefield 3
 - Battlefield 4
-- Battlefield Hardline Beta
+- Battlefield Hardline
+- Battlefield 4 CTE
+- Battlefield Hardline CTE
  
 Future plans:
 - Sign Up by Google Account to prevent spam.
@@ -20,6 +22,10 @@ Future plans:
 - MOHW support can be implemented with donation only.
 
 =========================
+
+v 0.8.5:
+- Bug fix.
+- CTE support.
 
 v 0.8.4:
 - BSB button was not shown at Battlefield 4's serverbrowser warsaw.

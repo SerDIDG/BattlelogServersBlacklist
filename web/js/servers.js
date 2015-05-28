@@ -9,6 +9,8 @@ cm.define('Tpl.Servers', {
             'bf3' : 'Battlefield 3',
             'bf4' : 'Battlefield 4',
             'bfh' : 'Battlefield Hardline',
+            'cte_bf4' : 'Battlefield 4 CTE',
+            'cte_bfh' : 'Battlefield Hardline CTE',
             'bf5' : 'Battlefield 5'
         }
     }

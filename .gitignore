@@ -1,3 +1,4 @@
-.idea/
-.git/
-opera/
+.DS_Store
+.idea
+.git
+opera

@@ -31,6 +31,14 @@ var BSBOptions = function(){
                 'id' : 'bfh',
                 'title' : 'Battlefield Hardline',
                 'onShow' : renderTab
+            }).addTab({
+                'id' : 'cte_bf4',
+                'title' : 'Battlefield 4 CTE',
+                'onShow' : renderTab
+            }).addTab({
+                'id' : 'cte_bfh',
+                'title' : 'Battlefield Hardline CTE',
+                'onShow' : renderTab
             }).set('bf3');
     };
 
