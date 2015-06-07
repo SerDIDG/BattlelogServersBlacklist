@@ -65,11 +65,18 @@ var BattlelogServersBlacklist = function(o){
 
     var DefaultServerBar = function(o){
         var myConfig = cm.merge({
-                'button' : {}
+                'button' : {},
+                'onRemove' : function(){
+                    myNodes['barContainer'] = cm.getEl('unified-game-manager');
+                    myNodes['bar'] = cm.getEl('ugm-playing-meta-data');
+                    cm.removeClass(myNodes['barContainer'], 'has-bsb');
+                    cm.replaceClass(myNodes['bar'], 'span5', barClass);
+                }
             }, o),
             myNodes = {},
             urlMatch,
-            game;
+            game,
+            barClass;
         // Init BSB Button
         if(buttons['serverBar']){
             buttons['serverBar'].remove();
@@ -79,6 +86,7 @@ var BattlelogServersBlacklist = function(o){
         intervals['serverBar'] = setInterval(function(){
             if(config['status'] == 'on'){
                 if(!buttons['serverBar'].inDOM()){
+                    myNodes['barContainer'] = cm.getEl('unified-game-manager');
                     myNodes['bar'] = cm.getEl('ugm-playing-meta-data');
                     myNodes['url'] = myNodes['bar'] ? myNodes['bar'].querySelector('a') : null;
                     if(myNodes['bar'] && myNodes['url']){
@@ -86,7 +94,13 @@ var BattlelogServersBlacklist = function(o){
                         game = urlMatch.match(/^\/([0-9a-zA-Z\-]+)\//)[1];
                         // Insert container before server stuff
                         buttons['serverBar'].remove();
-                        cm.replaceClass(myNodes['bar'], 'span7 span6', 'span5');
+                        cm.addClass(myNodes['barContainer'], 'has-bsb');
+                        if(cm.isClass(myNodes['bar'], 'span7')){
+                            barClass = 'span7';
+                        }else if(cm.isClass(myNodes['bar'], 'span6')){
+                            barClass = 'span6';
+                        }
+                        cm.replaceClass(myNodes['bar'], barClass, 'span5');
                         myNodes['container'] = cm.insertBefore(cm.Node('div', {'class' : ['bsb-server-bar', game, 'span1'].join(' ')}), myNodes['bar']);
                         // Insert BSB Button
                         buttons['serverBar'].setConfig(cm.merge(myConfig['button'], {

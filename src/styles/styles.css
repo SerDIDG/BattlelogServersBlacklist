@@ -144,6 +144,7 @@
     line-height: 24px;
     font-weight: bold;
     font-size: 16px;
+    color: #ffffff;
 }
 
 .bsb-comments-list > li:first-child h3 {
@@ -187,6 +188,29 @@
 
 .bsb-server-bar .bsb-button .counter .icon {
     margin: 1px 0 0 0;
+}
+
+/* *** FIX BATTLELOG STYLES *** */
+
+#base-bf3-body #unified-game-manager.has-bsb .ugm-state .ugm-playing-misc a,
+#unified-game-manager.has-bsb .ugm-state .ugm-playing-misc a {
+    max-width: 300px;
+}
+
+#base-bf3-body #unified-game-manager.has-bsb .ugm-state .ugm-loading,
+#unified-game-manager.has-bsb .ugm-state .ugm-loading {
+    max-width: 350px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+#base-bf3-body #unified-game-manager.has-bsb .ugm-state .ugm-loading .ugm-title,
+#unified-game-manager.has-bsb .ugm-state .ugm-loading .ugm-title {
+    max-width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 /* ******* DEFAULT STYLING ******* */
