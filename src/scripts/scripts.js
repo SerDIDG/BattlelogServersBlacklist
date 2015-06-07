@@ -65,18 +65,11 @@ var BattlelogServersBlacklist = function(o){
 
     var DefaultServerBar = function(o){
         var myConfig = cm.merge({
-                'button' : {},
-                'onRemove' : function(){
-                    myNodes['barContainer'] = cm.getEl('unified-game-manager');
-                    myNodes['bar'] = cm.getEl('ugm-playing-meta-data');
-                    cm.removeClass(myNodes['barContainer'], 'has-bsb');
-                    cm.replaceClass(myNodes['bar'], 'span5', barClass);
-                }
+                'button' : {}
             }, o),
             myNodes = {},
             urlMatch,
-            game,
-            barClass;
+            game;
         // Init BSB Button
         if(buttons['serverBar']){
             buttons['serverBar'].remove();
@@ -95,12 +88,7 @@ var BattlelogServersBlacklist = function(o){
                         // Insert container before server stuff
                         buttons['serverBar'].remove();
                         cm.addClass(myNodes['barContainer'], 'has-bsb');
-                        if(cm.isClass(myNodes['bar'], 'span7')){
-                            barClass = 'span7';
-                        }else if(cm.isClass(myNodes['bar'], 'span6')){
-                            barClass = 'span6';
-                        }
-                        cm.replaceClass(myNodes['bar'], barClass, 'span5');
+                        cm.replaceClass(myNodes['bar'], 'span6 span7', 'span5');
                         myNodes['container'] = cm.insertBefore(cm.Node('div', {'class' : ['bsb-server-bar', game, 'span1'].join(' ')}), myNodes['bar']);
                         // Insert BSB Button
                         buttons['serverBar'].setConfig(cm.merge(myConfig['button'], {
@@ -114,7 +102,8 @@ var BattlelogServersBlacklist = function(o){
                             },
                             'bsb' : config,
                             'onRemove' : function(){
-                                cm.replaceClass(myNodes['bar'], 'span6', 'span7');
+                                cm.removeClass(myNodes['barContainer'], 'has-bsb');
+                                cm.replaceClass(myNodes['bar'], 'span5', 'span6');
                                 cm.remove(myNodes['container']);
                             }
                         })).append();
