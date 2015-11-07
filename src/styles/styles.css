@@ -158,59 +158,37 @@
 /* *** SERVER BAR *** */
 
 .bsb-server-bar {
-    height: 42px;
+    height: 48px;
     float: left;
     overflow: hidden;
+    margin-right: 12px;
 }
 
 .bsb-server-bar .bsb-button {
-    height: 40px;
-    padding: 0;
+    height: 48px;
+    padding: 0 6px;
     border-radius: 0;
 }
 
 .bsb-server-bar .bsb-button .counter,
 .bsb-server-bar .bsb-button .title {
-    height: 18px;
+    height: 22px;
     display: block;
     text-align: center;
     overflow: hidden;
     border: none;
     text-overflow: ellipsis;
     white-space: nowrap;
-    line-height: 18px;
+    line-height: 22px;
 }
 
 .bsb-server-bar .bsb-button .counter {
-    height: 21px;
-    line-height: 21px;
+    height: 23px;
+    line-height: 23px;
 }
 
 .bsb-server-bar .bsb-button .counter .icon {
-    margin: 1px 0 0 0;
-}
-
-/* *** FIX BATTLELOG STYLES *** */
-
-#base-bf3-body #unified-game-manager.has-bsb .ugm-state .ugm-playing-misc a,
-#unified-game-manager.has-bsb .ugm-state .ugm-playing-misc a {
-    max-width: 300px;
-}
-
-#base-bf3-body #unified-game-manager.has-bsb .ugm-state .ugm-loading,
-#unified-game-manager.has-bsb .ugm-state .ugm-loading {
-    max-width: 350px;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-}
-
-#base-bf3-body #unified-game-manager.has-bsb .ugm-state .ugm-loading .ugm-title,
-#unified-game-manager.has-bsb .ugm-state .ugm-loading .ugm-title {
-    max-width: 100%;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
+    margin: 2px 0 0 0;
 }
 
 /* ******* DEFAULT STYLING ******* */
@@ -316,32 +294,32 @@
 /* *** SERVER BAR *** */
 
 .bsb-server-bar .bsb-button.bsb-default {
-    height: 42px;
+    height: 48px;
+    padding: 0 6px;
     font-size: 10px;
-    padding: 0;
 }
 
 .bsb-server-bar .bsb-button.bsb-default .counter,
 .bsb-server-bar .bsb-button.bsb-default .title {
-    height: 20px;
+    height: 22px;
     display: block;
     text-align: center;
     overflow: hidden;
     border: none;
     text-overflow: ellipsis;
     white-space: nowrap;
-    line-height: 18px;
+    line-height: 22px;
 }
 
 .bsb-server-bar .bsb-button.bsb-default .counter {
-    height: 21px;
-    line-height: 21px;
+    height: 23px;
+    line-height: 23px;
     border-bottom: 1px solid #D5DDE5;
     font-size: 13px;
 }
 
 .bsb-server-bar .bsb-button.bsb-default .counter .icon {
-    margin: 1px 0 0 0;
+    margin: 2px 0 0 0;
 }
 
 .bsb-server-bar .bsb-button.bsb-default.bsb-active .counter {
@@ -482,30 +460,30 @@
 /* *** SERVER BAR *** */
 
 .bsb-server-bar .bsb-button.bf3 {
-    height: 40px;
+    height: 48px;
     border-radius: 0;
 }
 
 .bsb-server-bar .bsb-button.bf3 .counter,
 .bsb-server-bar .bsb-button.bf3 .title {
-    height: 18px;
+    height: 22px;
     display: block;
     text-align: center;
     overflow: hidden;
     border: none;
     text-overflow: ellipsis;
     white-space: nowrap;
-    line-height: 18px;
+    line-height: 22px;
 }
 
 .bsb-server-bar .bsb-button.bf3 .counter {
-    height: 21px;
-    line-height: 21px;
+    height: 23px;
+    line-height: 23px;
     border-bottom: 1px solid #D5D5D5;
 }
 
 .bsb-server-bar .bsb-button.bf3 .counter .icon {
-    margin: 1px 0 0 0;
+    margin: 2px 0 0 0;
 }
 
 .bsb-server-bar .bsb-button.bf3.bsb-active .counter {

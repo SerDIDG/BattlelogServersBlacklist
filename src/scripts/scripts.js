@@ -80,7 +80,7 @@ var BattlelogServersBlacklist = function(o){
             if(config['status'] == 'on'){
                 if(!buttons['serverBar'].inDOM()){
                     myNodes['barContainer'] = cm.getEl('unified-game-manager');
-                    myNodes['bar'] = cm.getEl('ugm-playing-meta-data');
+                    myNodes['bar'] = cm.getEl('ugm-playing-info');
                     myNodes['url'] = myNodes['bar'] ? myNodes['bar'].querySelector('a') : null;
                     if(myNodes['bar'] && myNodes['url']){
                         urlMatch = myNodes['url'].getAttribute('href');
@@ -88,8 +88,7 @@ var BattlelogServersBlacklist = function(o){
                         // Insert container before server stuff
                         buttons['serverBar'].remove();
                         cm.addClass(myNodes['barContainer'], 'has-bsb');
-                        cm.replaceClass(myNodes['bar'], 'span6 span7', 'span5');
-                        myNodes['container'] = cm.insertBefore(cm.Node('div', {'class' : ['bsb-server-bar', game, 'span1'].join(' ')}), myNodes['bar']);
+                        myNodes['container'] = cm.insertBefore(cm.Node('div', {'class' : ['bsb-server-bar', game].join(' ')}), myNodes['bar']);
                         // Insert BSB Button
                         buttons['serverBar'].setConfig(cm.merge(myConfig['button'], {
                             'container' : myNodes['container'],
@@ -103,7 +102,6 @@ var BattlelogServersBlacklist = function(o){
                             'bsb' : config,
                             'onRemove' : function(){
                                 cm.removeClass(myNodes['barContainer'], 'has-bsb');
-                                cm.replaceClass(myNodes['bar'], 'span5', 'span6');
                                 cm.remove(myNodes['container']);
                             }
                         })).append();

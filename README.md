@@ -23,6 +23,9 @@ Future plans:
 
 =========================
 
+v 0.8.8:
+- Status bar fix.
+
 v 0.8.7:
 - Status bar fix.
 
