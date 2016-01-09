@@ -5,7 +5,7 @@ Google Chrome Extension.
 
 This extension allows you to create your own blacklist of banned Battlefield series servers.
 
-Tired of stupid servers configuration; auto balance in inappropriate moment; no ability to move to larger / winning team; servers' admins; bans for no reason? Just add a server to your blacklist and you won't see it again anymore.
+Tired of stupid servers configuration; auto balance in inappropriate moment; no ability to move to a larger / winning team; servers' admins; bans for no reason? Just add a server to your blacklist and you won't see it again anymore.
 
 Supported games:
 - Battlefield 3
@@ -16,10 +16,10 @@ Supported games:
  
 Future plans:
 - Sign Up by Google Account to prevent spam.
-- User comments votes and raiting.
-- Hide blocked servers from Server Browser.
+- User comments votes and ratings.
+- Hide blocked servers from the Server Browser.
 - Preferences tab.
-- MOHW support can be implemented with donation only.
+- MOH:W support can be implemented with donation only.
 
 =========================
 
