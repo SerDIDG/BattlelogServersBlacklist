@@ -40,7 +40,7 @@ Com['Dialog'] = function(o){
             'onOpenStart' : function(dialog){},
 			'onOpen' : function(dialog){},
 			'onClose' : function(dialog){},
-			'langs' : {
+			'messages' : {
 				'closeTitle' : 'Close',
 				'close' : 'x'
 			}
@@ -73,10 +73,10 @@ Com['Dialog'] = function(o){
 		// Render close button
 		if(config['closeButton']){
             nodes['windowInner'].appendChild(
-				nodes['close'] = cm.Node('div', {'class' : 'close'}, config['langs']['close'])
+				nodes['close'] = cm.Node('div', {'class' : 'close'}, config['messages']['close'])
 			);
 			if(config['closeTitle']){
-				nodes['close'].title = config['langs']['closeTitle'];
+				nodes['close'].title = config['messages']['closeTitle'];
 			}
 			nodes['close'].onclick = close;
 		}
