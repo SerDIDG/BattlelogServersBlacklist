@@ -23,6 +23,9 @@ Future plans:
 
 =========================
 
+v 0.9.0:
+- Remote server fix.
+
 v 0.8.8:
 - Status bar fix.
 

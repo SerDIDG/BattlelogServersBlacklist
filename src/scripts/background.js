@@ -6,42 +6,12 @@
  */
 
 var BSB = function(){
-    var langs = {
-        'enabled' : 'Battlelog Servers Blacklist are enabled!',
-        'disabled' : 'Battlelog Servers Blacklist are disabled!',
-        'ban' : 'Block',
-        'unban' : 'Blocked',
-        'banned' : 'Server in blacklist',
-        'added' : 'Server added to blacklist',
-        'removed' : 'Server removed from blacklist',
-        'addComment' : 'State a reason',
-        'save' : 'Save',
-        'cancel' : 'Cancel',
-        'enabledButton' : 'Enabled',
-        'bannedList' : 'Open servers blacklist',
-        'addedDate' : 'Date added:',
-        'serverName' : 'Server name:',
-        'comment' : 'Comment:',
-        'game' : 'Game:',
-        'counter' : 'Total: ',
-        'remove' : 'Remove',
-        'edit' : 'Edit',
-        'yourComment' : 'Your comment:',
-        'globalComments' : 'Global comments:',
-        'emptyComment' : 'Comment not given.',
-        'addWindowTitle' : 'Add to blacklist',
-        'listEmptyName' : 'Hello Oldfag! Server name doesn\'t exists, because you was started using this plugin when trees was bigger and grass was greener.',
-        'visitTitle' : 'Screensider.com',
-        'visitDescr' : 'Games Screenshoting Community. Votes, discussions, ratings and much more in one place.',
-        'dialog' : {
-            'closeTitle' : 'Close',
-            'close' : ''
-        }
-    };
+	var _config = {};
 
     /* ******* LINC SCRIPTS ******* */
 
     var init = function(){
+		_config = getConfig();
         // Add chrome extention events
         chrome.extension.onMessage.addListener(onRequest);
         // Sync database
@@ -98,7 +68,9 @@ var BSB = function(){
     };
 
     var sync = function(){
-        var list = getList(), data = {}, serverData;
+        var list = getList(),
+			data = {},
+			serverData;
 
         cm.forEach(list, function(item, sid){
             if(!item['bsbid']){
@@ -110,7 +82,7 @@ var BSB = function(){
             cm.ajax({
                 'type' : 'text',
                 'params' : cm.obj2URI({'data' : JSON.stringify(data)}),
-                'url' : 'http://bsb.artlark.ru',
+                'url' : _config.api,
                 'handler' : function(o){
                     serverData = JSON.parse(o);
                     if(serverData && !serverData['error']){
@@ -128,11 +100,43 @@ var BSB = function(){
 
     var getConfig = function(){
         return {
-            'status' : cm.storageGet('status'),
-            'version' : getDetails('version'),
-            'commentLength' : 200,
-            'langs' : langs
-        };
+			'api' : 'https://bsb.artlark.ru',
+			'status' : cm.storageGet('status'),
+			'version' : getDetails('version'),
+			'commentLength' : 200,
+			'messages' : {
+				'enabled' : 'Battlelog Servers Blacklist are enabled!',
+				'disabled' : 'Battlelog Servers Blacklist are disabled!',
+				'ban' : 'Block',
+				'unban' : 'Blocked',
+				'banned' : 'Server in blacklist',
+				'added' : 'Server added to blacklist',
+				'removed' : 'Server removed from blacklist',
+				'addComment' : 'State a reason',
+				'save' : 'Save',
+				'cancel' : 'Cancel',
+				'enabledButton' : 'Enabled',
+				'bannedList' : 'Open servers blacklist',
+				'addedDate' : 'Date added:',
+				'serverName' : 'Server name:',
+				'comment' : 'Comment:',
+				'game' : 'Game:',
+				'counter' : 'Total: ',
+				'remove' : 'Remove',
+				'edit' : 'Edit',
+				'yourComment' : 'Your comment:',
+				'globalComments' : 'Global comments:',
+				'emptyComment' : 'Comment not given.',
+				'addWindowTitle' : 'Add to blacklist',
+				'listEmptyName' : 'Hello Oldfag! Server name doesn\'t exists, because you was started using this plugin when trees was bigger and grass was greener.',
+				'visitTitle' : 'Screensider.com',
+				'visitDescr' : 'Games Screenshoting Community. Votes, discussions, ratings and much more in one place.',
+				'dialog' : {
+					'closeTitle' : 'Close',
+					'close' : ''
+				}
+			}
+		};
     };
 
     var getDetails = function(key){
@@ -157,7 +161,7 @@ var BSB = function(){
             'type' : 'text',
             'method' : 'get',
             'params' : cm.obj2URI({'sid' : sid}),
-            'url' : 'http://bsb.artlark.ru',
+            'url' : _config.api,
             'handler' : handler || function(){}
         });
     };
@@ -214,7 +218,7 @@ var BSB = function(){
             });
             chrome.pageAction.setTitle({
                 'tabId' : tab.id,
-                'title' : langs['disabled']
+                'title' : _config.messages['disabled']
             });
         }else{
             chrome.pageAction.setIcon({
@@ -223,7 +227,7 @@ var BSB = function(){
             });
             chrome.pageAction.setTitle({
                 'tabId' : tab.id,
-                'title' : langs['enabled']
+                'title' : _config.messages['enabled']
             });
         }
     };

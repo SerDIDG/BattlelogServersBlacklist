@@ -50,7 +50,7 @@ var BSBOptions = function(){
                     item['id'] = sid;
                     if(cm.isEmpty(item['name']) && cm.isEmpty(item['comment'])){
                         item['name'] = item['id'];
-                        item['comment'] = ['<i>', config['langs']['listEmptyName'], '</i>'].join('');
+                        item['comment'] = ['<i>', config['messages']['listEmptyName'], '</i>'].join('');
                     }
 
                     if(!cm.isEmpty(item['url'])){
@@ -81,14 +81,14 @@ var BSBOptions = function(){
             'sort' : 'date',
             'order' : 'DESC',
             'paginator' : false,
-            'langs' : {
-                'counter' : config['langs']['counter']
+            'messages' : {
+                'counter' : config['messages']['counter']
             },
             'cols' : [
-                {'key' : 'name', 'type' : 'url', 'linkKey' : 'url', 'width' : '30%', 'title' : config['langs']['serverName'], 'titleTag' : true},
-                {'key' : 'comment', 'type' : 'text', 'width' : 'auto', 'title' : config['langs']['comment'], 'titleTag' : true},
-                {'key' : 'date', 'type' : 'date', 'width' : 140, 'title' : config['langs']['addedDate']},
-                {'type' : 'icon', 'iconClass' : 'remove', 'width' : 16, 'sort' : false, 'title' : config['langs']['remove'], 'onClick' : remove}
+                {'key' : 'name', 'type' : 'url', 'linkKey' : 'url', 'width' : '30%', 'title' : config['messages']['serverName'], 'titleTag' : true},
+                {'key' : 'comment', 'type' : 'text', 'width' : 'auto', 'title' : config['messages']['comment'], 'titleTag' : true},
+                {'key' : 'date', 'type' : 'date', 'width' : 140, 'title' : config['messages']['addedDate']},
+                {'type' : 'icon', 'iconClass' : 'remove', 'width' : 16, 'sort' : false, 'title' : config['messages']['remove'], 'onClick' : remove}
             ]
         });
     };

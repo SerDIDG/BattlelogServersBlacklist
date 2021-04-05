@@ -78,10 +78,10 @@ Com['BSBButton'] = function(o){
         var status = list.length;
         if(!userComment){
             cm.removeClass(nodes['container'], 'bsb-active');
-            nodes['title'].innerHTML = config['bsb']['langs']['ban'];
+            nodes['title'].innerHTML = config['bsb']['messages']['ban'];
         }else{
             cm.addClass(nodes['container'], 'bsb-active');
-            nodes['title'].innerHTML = config['bsb']['langs']['unban'];
+            nodes['title'].innerHTML = config['bsb']['messages']['unban'];
         }
         nodes['counter'].innerHTML = status;
     };
@@ -94,7 +94,7 @@ Com['BSBButton'] = function(o){
             if(userComment){
                 nodes['comments'].appendChild(
                     cm.Node('li',
-                        cm.Node('h3', config['bsb']['langs']['yourComment'])
+                        cm.Node('h3', config['bsb']['messages']['yourComment'])
                     )
                 );
                 nodes['comments'].appendChild(
@@ -104,7 +104,7 @@ Com['BSBButton'] = function(o){
                             cm.Node('li',
                                 text = cm.Node('div', {'class' : 'text'}),
                                 cm.Node('div', {'class' : 'form-icons-outside'},
-                                    nodes['commentsEdit'] = cm.Node('div', {'class' : 'icon edit', 'title' : config['bsb']['langs']['edit']})
+                                    nodes['commentsEdit'] = cm.Node('div', {'class' : 'icon edit', 'title' : config['bsb']['messages']['edit']})
                                 )
                             )
                         )
@@ -114,7 +114,7 @@ Com['BSBButton'] = function(o){
                 if(!cm.isEmpty(userComment['comment'])){
                     text.innerHTML = userComment['comment'];
                 }else{
-                    text.innerHTML = config['bsb']['langs']['emptyComment'];
+                    text.innerHTML = config['bsb']['messages']['emptyComment'];
                     cm.addClass(text, 'empty');
                 }
                 // Separator
@@ -127,7 +127,7 @@ Com['BSBButton'] = function(o){
             // Global Comments
             if(!cm.isEmpty(list)){
                 nodes['comments'].appendChild(
-                    cm.Node('li', cm.Node('h3', config['bsb']['langs']['globalComments']))
+                    cm.Node('li', cm.Node('h3', config['bsb']['messages']['globalComments']))
                 );
                 cm.forEach(list, renderComment);
             }
@@ -147,7 +147,7 @@ Com['BSBButton'] = function(o){
         if(!cm.isEmpty(item['comment'])){
             text.innerHTML = item['comment'];
         }else{
-            text.innerHTML = config['bsb']['langs']['emptyComment'];
+            text.innerHTML = config['bsb']['messages']['emptyComment'];
             cm.addClass(text, 'empty');
         }
     };
@@ -156,22 +156,22 @@ Com['BSBButton'] = function(o){
         // Structure
         nodes['dialogContent'] = cm.Node('div', {'class' : 'form'},
             cm.Node('dl', {'class' : 'form-box'},
-                cm.Node('dt', config['bsb']['langs']['comment']),
+                cm.Node('dt', config['bsb']['messages']['comment']),
                 cm.Node('dd',
                     nodes['dialogText'] = cm.Node('textarea', {'class' : 'textarea', 'maxlength' : config['bsb']['commentLength']}, userComment['comment'] || '')
                 )
             ),
             cm.Node('div', {'class' : 'btn-wrap'},
-                nodes['dialogSave'] = cm.Node('div', {'class' : 'btn btn-small btn-primary'}, config['bsb']['langs']['save']),
-                nodes['dialogCancel'] = cm.Node('div', {'class' : 'btn btn-small'}, config['bsb']['langs']['cancel'])
+                nodes['dialogSave'] = cm.Node('div', {'class' : 'btn btn-small btn-primary'}, config['bsb']['messages']['save']),
+                nodes['dialogCancel'] = cm.Node('div', {'class' : 'btn btn-small'}, config['bsb']['messages']['cancel'])
             )
         );
         // Open Dialog
         components['dialog'] = new Com.Dialog({
-            'title' : config['bsb']['langs']['addWindowTitle'],
+            'title' : config['bsb']['messages']['addWindowTitle'],
             'content' : nodes['dialogContent'],
             'className' : config['classes']['dialog'],
-            'langs' : config['bsb']['langs']['dialog'],
+            'messages' : config['bsb']['messages']['dialog'],
             'onOpenStart' : function(){
                 components['tooltip'].hide();
                 nodes['dialogText'].focus();
@@ -197,7 +197,7 @@ Com['BSBButton'] = function(o){
             components['dialog'].close();
             new Com.BSBNotification({
                 'container' : config['notificationContainer'],
-                'message' : config['bsb']['langs']['added']
+                'message' : config['bsb']['messages']['added']
             });
         });
     };
@@ -206,7 +206,7 @@ Com['BSBButton'] = function(o){
         chrome.extension.sendMessage({'type' : 'unban', 'sid' : config['server']['id']}, function(){
             new Com.BSBNotification({
                 'container' : config['notificationContainer'],
-                'message' : config['bsb']['langs']['removed']
+                'message' : config['bsb']['messages']['removed']
             });
         });
     };

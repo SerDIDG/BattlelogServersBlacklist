@@ -1,9 +1,10 @@
 var BattlelogServersBlacklist = function(o){
-    var that = this, config = cm.merge({
+    var that = this,
+		config = cm.merge({
             'status' : 'on',
             'version' : 0,
             'commentLength' : 200,
-            'langs' : {}
+            'messages' : {}
         }, o),
         buttons = {},
         intervals = {};
@@ -128,7 +129,7 @@ var BattlelogServersBlacklist = function(o){
             buttons['serversList'] = new Com.BSBButton({'bsb' : config});
             // Set check interval for button existing and renewal button's config
             intervals['serversList'] = setInterval(function(){
-                if(config['status'] == 'on'){
+                if(config['status'] === 'on'){
                     if(!buttons['serversList'].inDOM()){
                         myNodes['rightColumn'] = cm.getEl('serverbrowser-show');
                         if(myNodes['rightColumn']){
@@ -179,7 +180,7 @@ var BattlelogServersBlacklist = function(o){
             buttons['serverPage'] = new Com.BSBButton({'bsb' : config});
             // Set check interval for button existing and renewal button's config
             intervals['serverPage'] = setInterval(function(){
-                if(config['status'] == 'on'){
+                if(config['status'] === 'on'){
                     if(!buttons['serverPage'].inDOM()){
                         myNodes['page'] = cm.getEl('server-page');
                         if(myNodes['page']){
@@ -224,7 +225,7 @@ var BattlelogServersBlacklist = function(o){
             buttons['serversList'] = new Com.BSBButton({'bsb' : config});
             // Set check interval for button existing and renewal button's config
             intervals['serversList'] = setInterval(function(){
-                if(config['status'] == 'on'){
+                if(config['status'] === 'on'){
                     if(!buttons['serversList'].inDOM()){
                         myNodes['rightColumn'] = cm.getEl('serverguide-show-column');
                         if(myNodes['rightColumn']){
@@ -276,7 +277,7 @@ var BattlelogServersBlacklist = function(o){
             buttons['serverPage'] = new Com.BSBButton({'bsb' : config});
             // Set check interval for button existing and renewal button's config
             intervals['serverPage'] = setInterval(function(){
-                if(config['status'] == 'on'){
+                if(config['status'] === 'on'){
                     if(!buttons['serverPage'].inDOM()){
                         myNodes['favourite'] = cm.getEl('serverguide-page-favourite');
                         if(myNodes['favourite']){

@@ -9,7 +9,7 @@ Com['Gridlist'] = function(o){
             'order' : 'ASC',
             'displayCounter' : true,
             'paginator' : true,
-            'langs' : {
+            'messages' : {
                 'counter' : 'Total: '
             }
         }, o),
@@ -29,7 +29,7 @@ Com['Gridlist'] = function(o){
         // Counter
         if(config['displayCounter']){
             nodes['container'].appendChild(
-                cm.Node('div', {'class' : 'gridlist-counter'}, config['langs']['counter'] + config['data'].length)
+                cm.Node('div', {'class' : 'gridlist-counter'}, config['messages']['counter'] + config['data'].length)
             );
         }
         // Sorting
